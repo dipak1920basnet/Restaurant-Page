@@ -8,21 +8,17 @@ const homeBtn = document.getElementById('home');
 const menuBtn = document.getElementById('menu');
 const contactBtn = document.getElementById('contact');
 
-// Event listeners
-homeBtn.addEventListener('click', () => {
-  contentDiv.innerHTML = '';
-  contentDiv.appendChild(loadHome());
-});
+function call(button, loadFunction) {
+  button.addEventListener("click", () => {
+    contentDiv.innerHTML = '';
+    contentDiv.appendChild(loadFunction()); // <--- add parentheses to call the function
+  });
+}
 
-menuBtn.addEventListener('click', () => {
-  contentDiv.innerHTML = '';
-  contentDiv.appendChild(loadMenu());
-});
+call(homeBtn, loadHome);
+call(menuBtn, loadMenu);
+call(contactBtn, loadContact);
 
-contactBtn.addEventListener('click', () => {
-  contentDiv.innerHTML = '';
-  contentDiv.appendChild(loadContact());
-});
 
 // Load default page
 contentDiv.appendChild(loadHome());
